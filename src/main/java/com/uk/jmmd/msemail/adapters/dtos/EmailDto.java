@@ -1,4 +1,4 @@
-package com.uk.jmmd.msemail.dtos;
+package com.uk.jmmd.msemail.adapters.dtos;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

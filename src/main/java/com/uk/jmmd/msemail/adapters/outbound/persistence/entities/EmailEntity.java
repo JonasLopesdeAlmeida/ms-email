@@ -1,7 +1,8 @@
-package com.uk.jmmd.msemail.model;
+package com.uk.jmmd.msemail.adapters.outbound.persistence.entities;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,20 +11,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.uk.jmmd.msemail.enums.StatusEmail;
+import com.uk.jmmd.msemail.application.domain.enums.StatusEmail;
 
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "TB_EMAIL")
-public class EmailModel implements Serializable {
+public class EmailEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long emailId;
+	//UUID avoid conflict of distribute transactions among micro services
+	private UUID emailId;
 	private String ownerRef;
 	private String emailFrom;
 	private String emailTo;
